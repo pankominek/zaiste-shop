@@ -18,7 +18,7 @@ interface HeaderProps {
 
 export const Header = ({ data }: HeaderProps) => {
   return (
-    <header className="mx-auto w-full max-w-5xl">
+    <header className="container">
       {data.topbar.status && data.topbar.text.length > 0 && (
         <Topbar text={data.topbar.text} />
       )}

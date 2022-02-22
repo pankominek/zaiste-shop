@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header data={dataHeader} />
-      <main className="bg-white-100 mx-auto w-full max-w-5xl flex-grow bg-white py-4 px-2">
+      <main className="bg-white container flex-grow py-4 px-2">
         <h2>Home</h2>
       </main>
       <Footer />
