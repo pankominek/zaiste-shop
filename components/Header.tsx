@@ -1,22 +1,28 @@
-import { NavItem } from "./NavItem";
+import { Navbar } from "./Navbar";
+import { Topbar } from "./Topbar";
 
-interface HeaderProp {
-  navItems: Array<{
-    name: string;
-    path: string;
-  }>;
+interface HeaderProps {
+  data: {
+    navbar: {
+      items: Array<{
+        name: string;
+        path: string;
+      }>;
+    };
+    topbar: {
+      status: boolean;
+      text: string;
+    };
+  };
 }
 
-export const Header = ({ navItems }: HeaderProp) => {
+export const Header = ({ data }: HeaderProps) => {
   return (
-    <header className="bg-gray-900 text-white mx-auto w-full max-w-5xl py-4 px-2">
-      <nav>
-        <ul className="flex">
-          {navItems.map((item, index) => (
-            <NavItem key={index} name={item.name} path={item.path} />
-          ))}
-        </ul>
-      </nav>
+    <header className="mx-auto w-full max-w-5xl">
+      {data.topbar.status && data.topbar.text.length > 0 && (
+        <Topbar text={data.topbar.text} />
+      )}
+      <Navbar navItems={data.navbar.items} />
     </header>
   );
 };

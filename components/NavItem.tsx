@@ -8,12 +8,10 @@ interface NavItemProps {
 
 export const NavItem = ({ name, path }: NavItemProps) => {
   const router = useRouter();
-
-  const isSelected =
-    router.pathname === path ? "selected cursor-default" : "text-blue-300";
+  const isSelected = router.pathname === path ? "selected cursor-default" : "hover:text-blue-500";
 
   return (
-    <li className="mr-6">
+    <li className="mx-2">
       <Link href={path}>
         <a className={isSelected}>{name}</a>
       </Link>
