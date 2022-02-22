@@ -1,15 +1,20 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export const NavItem = ({ url, name } : {url: string, name: string} ) => {
+interface NavItemProps {
+  name: string;
+  path: string;
+}
+
+export const NavItem = ({ name, path }: NavItemProps) => {
   const router = useRouter();
 
   const isSelected =
-    router.pathname === url ? "selected cursor-default" : "text-blue-300";
+    router.pathname === path ? "selected cursor-default" : "text-blue-300";
 
   return (
     <li className="mr-6">
-      <Link href={url}>
+      <Link href={path}>
         <a className={isSelected}>{name}</a>
       </Link>
     </li>
