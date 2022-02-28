@@ -1,22 +1,38 @@
+import { ReactNode } from "react";
+
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { Main } from "./Main";
 
-export const Layout = ({ children }: any) => {
-  const dataHeader = {
-    navbar: {
-      items: [{ name: "About", path: "/about" }],
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export const Layout = ({ children }: LayoutProps) => {
+  const DATA = {
+    header: {
+      navbar: {
+        logo: {
+          src: '/images/logo.svg',
+          alt: 'Logo'
+        },
+        items: [{ name: "About", path: "/about" }],
+      },
+      topbar: {
+        text: "Get free delivery on orders over $100",
+        status: true,
+      },
     },
-    topbar: {
-      text: "Get free delivery on orders over $100",
-      status: true,
+    footer: {
+      text: "Zaiste programuj",
     },
   };
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header data={dataHeader} />
-      <main className="bg-white container flex-grow py-4 px-2">{children}</main>
-      <Footer />
+      <Header data={DATA.header} />
+      <Main data={children} />
+      <Footer data={DATA.footer} />
     </div>
   );
 };

@@ -4,6 +4,10 @@ import { Topbar } from "./Topbar";
 interface HeaderProps {
   data: {
     navbar: {
+      logo: {
+        src: string,
+        alt: string,
+      }
       items: Array<{
         name: string;
         path: string;
@@ -22,7 +26,7 @@ export const Header = ({ data }: HeaderProps) => {
       {data.topbar.status && data.topbar.text.length > 0 && (
         <Topbar text={data.topbar.text} />
       )}
-      <Navbar navItems={data.navbar.items} />
+      <Navbar data={data.navbar} />
     </header>
   );
 };
