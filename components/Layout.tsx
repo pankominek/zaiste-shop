@@ -13,10 +13,14 @@ export const Layout = ({ children }: LayoutProps) => {
     header: {
       navbar: {
         logo: {
-          src: '/images/logo.svg',
-          alt: 'Logo'
+          src: "/images/logo.svg",
+          alt: "Logo",
         },
-        items: [{ name: "About", path: "/about" }, { name: "Products", path: "/products" }],
+        items: [
+          { name: "About", path: "/about" },
+          { name: "Products-SSG", path: "/products-ssg" },
+          { name: "Products-CSR", path: "/products-csr" },
+        ],
       },
       topbar: {
         text: "Get free delivery on orders over $100",
