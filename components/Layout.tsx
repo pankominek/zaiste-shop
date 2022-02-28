@@ -16,7 +16,7 @@ export const Layout = ({ children }: LayoutProps) => {
           src: '/images/logo.svg',
           alt: 'Logo'
         },
-        items: [{ name: "About", path: "/about" }],
+        items: [{ name: "About", path: "/about" }, { name: "Products", path: "/products" }],
       },
       topbar: {
         text: "Get free delivery on orders over $100",
