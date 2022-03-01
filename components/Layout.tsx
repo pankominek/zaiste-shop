@@ -18,8 +18,7 @@ export const Layout = ({ children }: LayoutProps) => {
         },
         items: [
           { name: "About", path: "/about" },
-          { name: "Products-SSG", path: "/products-ssg" },
-          { name: "Products-CSR", path: "/products-csr" },
+          { name: "Products", path: "/products" },
         ],
       },
       topbar: {
