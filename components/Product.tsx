@@ -17,13 +17,14 @@ interface ProductProps {
 export const ProductDetails = ({ data }: ProductProps) => {
   return (
     <>
-      <div className="m-4 mx-auto relative w-full h-56 flex">
+      <div className="p-4 bg-white">
         <Image
           src={data.thumbnailUrl}
           alt={data.thumbnailAlt}
-          layout="fill"
+          layout="responsive"
+          width={16}
+          height={9}
           objectFit="contain"
-          quality={100}
         />
       </div>
       <div className="p-4">
@@ -50,16 +51,17 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
   return (
     <Link href={`/products/${data.id}`}>
       <a>
-        <div className="m-4 mx-auto relative w-full h-56 flex">
+        <div className="bg-white">
           <Image
             src={data.thumbnailUrl}
             alt={data.thumbnailAlt}
-            layout="fill"
+            layout="responsive"
+            width={16}
+            height={9}
             objectFit="contain"
-            quality={100}
           />
-        </div>
-        <h2 className="p-4 font-bold mb-3 text-xl">{data.title}</h2>
+      </div>
+      <h2 className="p-4 font-bold mb-3 text-xl">{data.title}</h2>
       </a>
     </Link>
   );

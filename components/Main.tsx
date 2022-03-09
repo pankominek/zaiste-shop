@@ -5,5 +5,5 @@ interface MainProps {
 }
 
 export const Main = ({ data }: MainProps) => {
-  return <main className="bg-white container flex-grow py-4 px-2">{data}</main>;
+  return <main className="container flex-grow py-4 px-2">{data}</main>;
 };
