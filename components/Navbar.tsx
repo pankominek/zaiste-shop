@@ -16,7 +16,7 @@ interface NavProps {
 
 export const Navbar = ({ data }: NavProps) => {
   return (
-    <nav className="flex py-4 px-2 bg-white border-b-2">
+    <nav className="flex py-4 px-2 bg-white border-2 mx-2 shadow">
       <Logo src={data.logo.src} alt={data.logo.alt} />
       <div className="flex justify-between items-center w-full ml-2">
         <ul className="flex">
