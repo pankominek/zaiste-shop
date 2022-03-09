@@ -29,7 +29,7 @@ const ProductIdPage = ({
 export default ProductIdPage;
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`https://fakestoreapi.com/products/`);
+  const res = await fetch(`https://naszsklep-api.vercel.app/api/products`);
   const data: StoreApiResponse[] = await res.json();
 
   return {
@@ -54,7 +54,7 @@ export const getStaticProps = async ({
     };
   }
   const res = await fetch(
-    `https://fakestoreapi.com/products/${params?.productId}`
+    `https://naszsklep-api.vercel.app/api/products/${params?.productId}`
   );
   const data: StoreApiResponse | null = await res.json();
 
