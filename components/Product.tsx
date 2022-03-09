@@ -51,7 +51,7 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
   return (
     <Link href={`/products/${data.id}`}>
       <a>
-        <div className="bg-white">
+        <div className="bg-white p-4">
           <Image
             src={data.thumbnailUrl}
             alt={data.thumbnailAlt}
@@ -60,8 +60,8 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
             height={9}
             objectFit="contain"
           />
-      </div>
-      <h2 className="p-4 font-bold mb-3 text-xl">{data.title}</h2>
+        </div>
+        <h2 className="p-4 font-bold text-lg">{data.title}</h2>
       </a>
     </Link>
   );

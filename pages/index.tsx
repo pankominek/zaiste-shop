@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { ProductDetails } from "../components/Product";
+import { ProductListItem } from "../components/Product";
 
 const getProducts = async () => {
   const res = await fetch(
@@ -25,15 +25,13 @@ const Home = () => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {data.map((product) => {
           return (
-            <li key={product.id} className="shadow border-2">
-              <ProductDetails
+            <li key={product.id} className="hover:shadow hover:text-blue-500 border-2">
+              <ProductListItem
                 data={{
                   id: product.id,
                   title: product.title,
-                  description: product.description,
                   thumbnailUrl: product.image,
                   thumbnailAlt: product.title,
-                  rating: product.rating.rate,
                 }}
               />
             </li>
