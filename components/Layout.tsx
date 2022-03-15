@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { Main } from "./Main";
 
 interface LayoutProps {
   children: ReactNode;
@@ -34,7 +33,7 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header data={DATA.header} />
-      <Main data={children} />
+      <main className="container flex-grow py-4 px-2">{children}</main>
       <Footer data={DATA.footer} />
     </div>
   );
