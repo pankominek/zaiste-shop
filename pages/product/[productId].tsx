@@ -11,18 +11,17 @@ const ProductIdPage = ({
   }
 
   return (
-    <div>
-      <ProductDetails
-        data={{
-          id: data.id,
-          title: data.title,
-          description: data.description,
-          thumbnailUrl: data.image,
-          thumbnailAlt: data.title,
-          rating: data.rating.rate,
-        }}
-      />
-    </div>
+    <ProductDetails
+      data={{
+        id: data.id,
+        title: data.title,
+        description: data.description,
+        thumbnailUrl: data.image,
+        thumbnailAlt: data.title,
+        rating: data.rating.rate,
+        longDescription: data.longDescription,
+      }}
+    />
   );
 };
 
@@ -72,6 +71,7 @@ interface StoreApiResponse {
   description: string;
   category: string;
   image: string;
+  longDescription: string;
   rating: {
     rate: number;
     count: number;
