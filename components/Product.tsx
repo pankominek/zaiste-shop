@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import { NextSeo } from "next-seo";
-import ReactMarkdown from "react-markdown";
+import { CustomReactMarkdown } from "../components/CustomReactMarkdown";
 import { Rating } from "../components/Rating";
 
 interface ProductDetails {
@@ -33,19 +34,19 @@ export const ProductDetails = ({ data }: ProductProps) => {
             {
               url: data.thumbnailUrl,
               alt: data.thumbnailAlt,
-              type: 'image/jpeg',
+              type: "image/jpeg",
             },
             {
-              url: 'https://www.example.ie/og-image-02.jpg',
+              url: "https://www.example.ie/og-image-02.jpg",
               width: 900,
               height: 800,
-              alt: 'Og Image Alt Second',
-              type: 'image/jpeg',
+              alt: "Og Image Alt Second",
+              type: "image/jpeg",
             },
-            { url: 'https://www.example.ie/og-image-03.jpg' },
-            { url: 'https://www.example.ie/og-image-04.jpg' },
+            { url: "https://www.example.ie/og-image-03.jpg" },
+            { url: "https://www.example.ie/og-image-04.jpg" },
           ],
-          site_name: 'Zaiste Shop',
+          site_name: "Zaiste Shop",
         }}
       />
       <figure className="border-2 shadow bg-white p-4">
@@ -63,7 +64,7 @@ export const ProductDetails = ({ data }: ProductProps) => {
       </div>
       <div className="col-span-full	border-2 shadow bg-white p-4">
         <article className="prose lg:prose-xl">
-          <ReactMarkdown>{data.longDescription}</ReactMarkdown>
+          <CustomReactMarkdown>{data.longDescription}</CustomReactMarkdown>
           <Rating rating={data.rating} />
         </article>
       </div>
