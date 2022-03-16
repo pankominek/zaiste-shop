@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { Rating } from "../components/Rating";
 
 interface ProductDetails {
   id: number;
@@ -18,8 +19,8 @@ interface ProductProps {
 
 export const ProductDetails = ({ data }: ProductProps) => {
   return (
-    <>
-      <figure className="mb-3 p-4 bg-white">
+    <div className="grid grid-cols-2 gap-4">
+      <figure className="border-2 shadow bg-white p-4">
         <Image
           src={data.thumbnailUrl}
           alt={data.thumbnailAlt}
@@ -29,14 +30,16 @@ export const ProductDetails = ({ data }: ProductProps) => {
           objectFit="contain"
         />
       </figure>
-      <article className="prose lg:prose-xl">
+      <div className="border-2 shadow bg-white p-4">
         <h2>{data.title}</h2>
-        <ReactMarkdown className="mb-3">{data.longDescription}</ReactMarkdown>
-        <p>
-          Rating: <span className="font-bold">{data.rating}</span>
-        </p>
-      </article>
-    </>
+      </div>
+      <div className="col-span-full	border-2 shadow bg-white p-4">
+        <article className="prose lg:prose-xl">
+          <ReactMarkdown>{data.longDescription}</ReactMarkdown>
+          <Rating rating={data.rating} />
+        </article>
+      </div>
+    </div>
   );
 };
 

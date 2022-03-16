@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -31,9 +30,9 @@ export const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen gap-4">
       <Header data={DATA.header} />
-      <main className="container flex-grow py-4 px-2">{children}</main>
+      <main className="container">{children}</main>
       <Footer data={DATA.footer} />
     </div>
   );

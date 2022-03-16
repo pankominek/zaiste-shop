@@ -6,7 +6,7 @@ interface FooterProps {
 
 export const Footer = ({ data }: FooterProps) => {
   return (
-    <footer className="bg-gray-900 text-white container py-4 px-2">
+    <footer className="bg-gray-900 container p-4 border-2 border-b-0 shadow">
       <p className="text-center text-gray-400">
         {`© ${new Date().getFullYear()} ${data.text}`}
       </p>

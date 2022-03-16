@@ -22,7 +22,7 @@ interface HeaderProps {
 
 export const Header = ({ data }: HeaderProps) => {
   return (
-    <header className="container">
+    <header className="container border-2 shadow border-t-0">
       {data.topbar.status && data.topbar.text.length > 0 && (
         <Topbar text={data.topbar.text} />
       )}

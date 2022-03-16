@@ -39,7 +39,7 @@ const Home = () => {
           return (
             <li
               key={product.id}
-              className="hover:shadow hover:text-blue-500 border-2"
+              className="hover:text-blue-500 border-2 shadow"
             >
               <ProductListItem
                 data={{
