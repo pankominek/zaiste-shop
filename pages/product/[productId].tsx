@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType } from "next";
-
+import { serialize } from "next-mdx-remote/serialize";
 import { ProductDetails } from "../../components/Product";
 import { InferGetStaticPaths } from "../../types";
 
@@ -57,9 +57,19 @@ export const getStaticProps = async ({
   );
   const data: StoreApiResponse | null = await res.json();
 
+  if (!data) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      data,
+      data: {
+        ...data,
+        longDescription: await serialize(data.longDescription),
+      },
     },
   };
 };
