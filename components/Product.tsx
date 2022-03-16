@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { CustomReactMarkdown } from "../components/CustomReactMarkdown";
 import { Rating } from "../components/Rating";
+import { MarkdownResult } from "../types";
 
 interface ProductDetails {
   id: number;
@@ -12,7 +12,7 @@ interface ProductDetails {
   thumbnailUrl: string;
   thumbnailAlt: string;
   rating: number;
-  longDescription: MDXRemoteSerializeResult<Record<string, unknown>>;
+  longDescription: MarkdownResult;
 }
 
 interface ProductProps {
