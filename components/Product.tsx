@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import { Rating } from "../components/Rating";
 
@@ -20,6 +21,33 @@ interface ProductProps {
 export const ProductDetails = ({ data }: ProductProps) => {
   return (
     <div className="grid grid-cols-2 gap-4">
+      <NextSeo
+        title={data.title}
+        description={data.description}
+        canonical={`https://naszsklep-api.vercel.app/api/products${data.id}`}
+        openGraph={{
+          url: `https://naszsklep-api.vercel.app/api/products${data.id}`,
+          title: data.title,
+          description: data.description,
+          images: [
+            {
+              url: data.thumbnailUrl,
+              alt: data.thumbnailAlt,
+              type: 'image/jpeg',
+            },
+            {
+              url: 'https://www.example.ie/og-image-02.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image Alt Second',
+              type: 'image/jpeg',
+            },
+            { url: 'https://www.example.ie/og-image-03.jpg' },
+            { url: 'https://www.example.ie/og-image-04.jpg' },
+          ],
+          site_name: 'Zaiste Shop',
+        }}
+      />
       <figure className="border-2 shadow bg-white p-4">
         <Image
           src={data.thumbnailUrl}
