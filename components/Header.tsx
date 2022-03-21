@@ -4,10 +4,7 @@ import { Topbar } from "./Topbar";
 interface HeaderProps {
   data: {
     navbar: {
-      logo: {
-        src: string,
-        alt: string,
-      }
+      logo: string;
       items: Array<{
         name: string;
         path: string;

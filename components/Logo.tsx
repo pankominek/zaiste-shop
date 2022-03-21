@@ -1,17 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 
 interface LogoProps {
-
-    src: string;
-    alt: string;
+  name: string;
 }
 
-export const Logo = ({ src, alt }: LogoProps) => {
+export const Logo = ({ name }: LogoProps) => {
   return (
     <Link href="/">
-      <a>
-        <Image src={src} alt={alt} width={50} height={50} />
+      <a className="flex items-center justify-center w-2/6  ">
+        <h1 className="font-bold text-xl uppercase text-center">{name}</h1>
       </a>
     </Link>
   );

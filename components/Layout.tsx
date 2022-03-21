@@ -10,10 +10,7 @@ export const Layout = ({ children }: LayoutProps) => {
   const DATA = {
     header: {
       navbar: {
-        logo: {
-          src: "/images/logo.svg",
-          alt: "Logo",
-        },
+        logo: "zaiste shop",
         items: [
           { name: "About", path: "/about" },
           { name: "SSG", path: "/products-ssg" },
