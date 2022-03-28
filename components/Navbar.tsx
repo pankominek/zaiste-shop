@@ -1,12 +1,10 @@
 import { Logo } from "./Logo";
 import { NavItem } from "./NavItem";
+import { CartBar } from "./Cart/CartBar";
 
 interface NavProps {
   data: {
-    logo: {
-      src: string;
-      alt: string;
-    };
+    logo: string;
     items: Array<{
       name: string;
       path: string;
@@ -16,15 +14,18 @@ interface NavProps {
 
 export const Navbar = ({ data }: NavProps) => {
   return (
-    <nav className="flex p-4 bg-white">
-      <Logo src={data.logo.src} alt={data.logo.alt} />
-      <div className="flex justify-between items-center w-full ml-2">
-        <ul className="flex">
-          {data.items.map((item, index) => (
-            <NavItem key={index} name={item.name} path={item.path} />
-          ))}
-        </ul>
-      </div>
+    <nav className="flex justify-between items-center p-4 bg-white">
+      <ul className="flex w-full">
+        {data.items.map((item, index) => (
+          <NavItem key={index} name={item.name} path={item.path} />
+        ))}
+      </ul>
+      <Logo name={data.logo} />
+      <ul className="flex w-full justify-end">
+        <li>
+          <CartBar />
+        </li>
+      </ul>
     </nav>
   );
 };
