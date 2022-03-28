@@ -45,10 +45,14 @@ const CartContent = () => {
 const CartSummary = () => {
   const cartState = useCartState();
 
+  const itemsCount = cartState.items
+    .map((item) => item.count)
+    .reduce((prev, curr) => prev + curr, 0);
+
   return (
     <aside>
       <h3> Podsumowanie koszyka</h3>
-      <span>Liczba elementów: {cartState.items.length}</span>
+      <span>Liczba elementów: {itemsCount}</span>
     </aside>
   );
 };
