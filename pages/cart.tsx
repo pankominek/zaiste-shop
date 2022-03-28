@@ -1,7 +1,7 @@
 import { useCartState } from "../components/Cart/CartContext";
 
 const CartContent = () => {
-  const cartState = useCartState();
+  const { cartState } = useCartState();
 
   return (
     <ul className="col-span-2">
@@ -43,11 +43,7 @@ const CartContent = () => {
 };
 
 const CartSummary = () => {
-  const cartState = useCartState();
-
-  const itemsCount = cartState.items
-    .map((item) => item.count)
-    .reduce((prev, curr) => prev + curr, 0);
+  const { itemsCount } = useCartState();
 
   return (
     <aside>
@@ -57,8 +53,8 @@ const CartSummary = () => {
   );
 };
 
-const CartPage = () => {
-  const cartState = useCartState();
+function CartPage() {
+  const { cartState } = useCartState();
 
   return (
     <>
@@ -72,6 +68,6 @@ const CartPage = () => {
       )}
     </>
   );
-};
+}
 
 export default CartPage;

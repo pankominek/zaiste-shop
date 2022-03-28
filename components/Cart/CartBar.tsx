@@ -2,11 +2,7 @@ import Link from "next/link";
 import { useCartState } from "./CartContext";
 
 export const CartBar = () => {
-  const cartState = useCartState();
-
-  const itemsCount = cartState.items
-    .map((item) => item.count)
-    .reduce((prev, curr) => prev + curr, 0);
+  const { itemsCount } = useCartState();
 
   return (
     <Link href="/cart">

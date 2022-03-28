@@ -83,7 +83,7 @@ interface ProductListItemProps {
 }
 
 export const ProductListItem = ({ data }: ProductListItemProps) => {
-  const cartState = useCartState();
+  const { cartState } = useCartState();
 
   return (
     <li className="border-2 shadow">
