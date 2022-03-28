@@ -34,22 +34,18 @@ const Home = () => {
 
   return (
     <>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 divide-y divide-gray-200">
         {data.map((product) => {
           return (
-            <li
+            <ProductListItem
               key={product.id}
-              className="hover:text-blue-500 border-2 shadow"
-            >
-              <ProductListItem
-                data={{
-                  id: product.id,
-                  title: product.title,
-                  thumbnailUrl: product.image,
-                  thumbnailAlt: product.title,
-                }}
-              />
-            </li>
+              data={{
+                id: product.id,
+                title: product.title,
+                thumbnailUrl: product.image,
+                thumbnailAlt: product.title,
+              }}
+            />
           );
         })}
       </ul>
