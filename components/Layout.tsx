@@ -13,7 +13,7 @@ export const Layout = ({ children }: LayoutProps) => {
         logo: "zaiste shop",
         items: [
           { name: "About", path: "/about" },
-          { name: "SSG", path: "/products-ssg" },
+          { name: "Products", path: "/products" },
         ],
       },
       topbar: {
