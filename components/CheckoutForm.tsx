@@ -2,24 +2,31 @@ import { useForm } from "react-hook-form";
 import { validateCreditCardDate } from "../utils";
 import { FormCheckbox } from "./FormCheckbox";
 import { FormInput } from "./FormInput";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
-interface CheckoutFormData {
-  emailAddress: string;
-  nameOnCard: string;
-  cardNumber: string;
-  expirationDate: string;
-  cvc: string;
-  company: string;
-  address: string;
-  apartment: string;
-  city: string;
-  region: string;
-  postalCode: string;
-  sameAsShipping: boolean;
-}
+const checkoutFormSchema = yup.object({
+  emailAddress: yup.string().email().required('Pole wymagane'),
+  nameOnCard: yup.string().required('Pole wymagane'),
+  cardNumber: yup.string().required('Pole wymagane'),
+  expirationDate: yup.string().required('Pole wymagane'),
+  cvc: yup.string().required('Pole wymagane'),
+  company: yup.string().required('Pole wymagane'),
+  address: yup.string().required('Pole wymagane'),
+  apartment: yup.string().required('Pole wymagane'),
+  city: yup.string().required('Pole wymagane'),
+  region: yup.string().required('Pole wymagane'),
+  postalCode: yup.string().required('Pole wymagane'),
+  sameAsShipping: yup.boolean(),
+}).required();
+
+type CheckoutFormData = yup.InferType<typeof checkoutFormSchema>
 
 export const CheckoutForm = () => {
-  const { register, setValue, handleSubmit, formState } = useForm<CheckoutFormData>();
+  const { register, handleSubmit, formState } = useForm<CheckoutFormData>({
+    resolver: yupResolver(checkoutFormSchema)
+  });
+
   const onSubmit = handleSubmit(data => console.log(data));
 
   return (
@@ -44,7 +51,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="cc-name"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
                     <FormInput
@@ -53,7 +60,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="cc-number"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
                     <FormInput
@@ -62,7 +69,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="cc-exp"
-                      validate={validateCreditCardDate} />
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
@@ -72,7 +79,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="cc-csc"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
                     <FormInput
@@ -81,7 +88,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="organization"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-4">
                     <FormInput
@@ -90,7 +97,6 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="email"
-                      validate=""
                     />
                   </div>
                   <div className="col-span-6">
@@ -100,7 +106,6 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="street-address"
-                      validate=""
                     />
                   </div>
                   <div className="col-span-6">
@@ -110,7 +115,6 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="address-level3"
-                      validate=""
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -120,7 +124,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="address-level2"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <FormInput
@@ -129,7 +133,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="address-level1"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <FormInput
@@ -138,7 +142,7 @@ export const CheckoutForm = () => {
                       register={register}
                       error={formState.errors}
                       autoComplete="postal-code"
-                      validate="" />
+                    />
                   </div>
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <FormCheckbox

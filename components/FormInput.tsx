@@ -4,10 +4,9 @@ interface InputProps {
   error: any;
   name: string;
   autoComplete: string;
-  validate: any;
 };
 
-export const FormInput = ({ register, label, error, name, autoComplete, validate }: InputProps) => {
+export const FormInput = ({ register, label, error, name, autoComplete, }: InputProps) => {
   return (
     <>
       <label
@@ -21,13 +20,7 @@ export const FormInput = ({ register, label, error, name, autoComplete, validate
         id={name}
         autoComplete={autoComplete ? autoComplete : 'off'}
         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-        {...register(
-          name,
-          {
-            required: `${label} is required`,
-            validate: validate ? validate : '',
-          }
-        )}
+        {...register(name)}
       />
       <span className="text-xs text-red-700" role="alert">
         {error[name]?.message}
