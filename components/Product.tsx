@@ -5,9 +5,11 @@ import { CustomReactMarkdown } from "../components/CustomReactMarkdown";
 import { Rating } from "../components/Rating";
 import { MarkdownResult } from "../types";
 import { useCartState } from "./Cart/CartContext";
+import { ProductReviewContainer } from "./ProductReview/ProductReviewContainer";
 
 interface ProductDetails {
   id: string;
+  slug: string;
   title: string;
   description: string;
   thumbnailUrl: string;
@@ -60,15 +62,16 @@ export const ProductDetails = ({ data }: ProductProps) => {
           objectFit="contain"
         />
       </figure>
-      <div className="border-2 shadow bg-white p-4">
-        <h2>{data.title}</h2>
-      </div>
-      <div className="col-span-full	border-2 shadow bg-white p-4">
-        <article className="prose lg:prose-xl">
-          <CustomReactMarkdown>{data.longDescription}</CustomReactMarkdown>
+      <div className="border-2 shadow bg-white p-4 justify-between flex flex-col">
+        <header>
+          <h2 className="font-bold text-2xl">{data.title}</h2>
           <Rating rating={data.rating} />
-        </article>
+        </header>
+        <div className="prose lg:prose-xl">
+          <CustomReactMarkdown>{data.longDescription}</CustomReactMarkdown>
+        </div>
       </div>
+      <ProductReviewContainer productSlug={data.slug} />
     </div>
   );
 };

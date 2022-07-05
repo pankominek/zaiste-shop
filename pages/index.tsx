@@ -1,25 +1,28 @@
+import { CheckoutForm } from '../components/CheckoutForm';
+import { NewsletterForm } from '../components/NewsletterForm';
 import { useCreateProductReviewMutation } from '../generated/graphql';
 
 const Home = () => {
-  const [createReview, { data, loading, error }] = useCreateProductReviewMutation();
+  // const [createReview, { data, loading, error }] = useCreateProductReviewMutation();
 
-  const addReview = () =>
-    createReview({
-      variables: {
-        review: {
-          "headline": "Lorem ipsum",
-          "name": "Kamil",
-          "email": "kamil@pankominek.pl",
-          "content": "Bardzo dobry produkt!",
-          "rating": 5
-        }
-      }
-    });
+  // const addReview = () =>
+  //   createReview({
+  //     variables: {
+  //       review: {
+  //         "headline": "Lorem ipsum",
+  //         "name": "Kamil",
+  //         "email": "kamil@pankominek.pl",
+  //         "content": "Bardzo dobry produkt!",
+  //         "rating": 5
+  //       }
+  //     }
+  //   });
 
   return (
     <>
-      <button onClick={addReview} type="button">Dodaj komentarz</button>
-      {loading && (
+      {/* <button onClick={addReview} type="button">Dodaj komentarz</button> */}
+      <NewsletterForm />
+      {/* {loading && (
         <span>loading..</span>
       )}
       {error && (
@@ -27,7 +30,7 @@ const Home = () => {
       )}
       {data && (
         <pre>{JSON.stringify(data, null, 2)}</pre>
-      )}
+      )} */}
     </>
   );
 };

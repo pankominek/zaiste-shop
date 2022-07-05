@@ -1,7 +1,13 @@
 import { InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { ProductDetails } from "../../components/Product";
-import { GetProductDetailsBySlugDocument, GetProductDetailsBySlugQuery, GetProductDetailsBySlugQueryVariables, GetProductsSlugsDocument, GetProductsSlugsQuery } from "../../generated/graphql";
+import {
+  GetProductDetailsBySlugDocument,
+  GetProductDetailsBySlugQuery,
+  GetProductDetailsBySlugQueryVariables,
+  GetProductsSlugsDocument,
+  GetProductsSlugsQuery,
+} from "../../generated/graphql";
 import { apolloClient } from "../../graphql/apolloClient";
 import { InferGetStaticPaths } from "../../types";
 
@@ -22,6 +28,7 @@ const ProductIdPage = ({
         thumbnailAlt: data.name,
         rating: 4.75,
         longDescription: data.longDescription,
+        slug: data.slug,
       }}
     />
   );
@@ -49,7 +56,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({
   params,
 }: InferGetStaticPaths<typeof getStaticPaths>) => {
-
   if (!params?.productId) {
     return {
       props: {},
@@ -62,9 +68,9 @@ export const getStaticProps = async ({
     GetProductDetailsBySlugQueryVariables
   >({
     variables: {
-      slug: params.productId
+      slug: params.productId,
     },
-    query: GetProductDetailsBySlugDocument
+    query: GetProductDetailsBySlugDocument,
   });
 
   if (!data.product) {
