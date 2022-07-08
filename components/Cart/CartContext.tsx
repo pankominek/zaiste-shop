@@ -46,11 +46,9 @@ export const CartStateContextProvider = ({
             const existingItem = prevState.find(
               (existingItem) => existingItem.id === item.id
             );
-
             if (!existingItem) {
               return [...prevState, item];
             }
-
             return prevState.map((existingItem) => {
               if (existingItem.id === item.id) {
                 return {
@@ -58,7 +56,6 @@ export const CartStateContextProvider = ({
                   count: existingItem.count + 1,
                 };
               }
-
               return existingItem;
             });
           });
@@ -66,11 +63,9 @@ export const CartStateContextProvider = ({
         removeItemFromCart: (id) => {
           setCartItems((prevState) => {
             const existingItem = prevState.find((eItem) => eItem.id === id);
-
             if (existingItem && existingItem.count <= 1) {
               return prevState.filter((eItem) => eItem.id !== id);
             }
-
             return prevState.map((eItem) => {
               if (eItem.id === id) {
                 return {
@@ -78,7 +73,6 @@ export const CartStateContextProvider = ({
                   count: eItem.count - 1,
                 };
               }
-
               return eItem;
             });
           });
@@ -97,5 +91,12 @@ export const useCartState = () => {
     throw new Error("You forgot CartStateContextProvider!");
   }
 
-  return cartState;
+  const itemsCount = cartState.items
+    .map((item) => item.count)
+    .reduce((prev, curr) => prev + curr, 0);
+
+  return {
+    cartState,
+    itemsCount,
+  };
 };
